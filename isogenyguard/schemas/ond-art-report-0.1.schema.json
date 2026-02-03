@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ond-art-report-0.1.schema.json",
+  "title": "OND-ART Report v0.1",
+  "type": "object",
+  "required": [
+    "ond_art_version",
+    "notes",
+    "context",
+    "observation_map",
+    "obs_space",
+    "sampling",
+    "metrics",
+    "bootstrap",
+    "baseline"
+  ],
+  "properties": {
+    "ond_art_version": { "type": "string", "const": "0.1" },
+    "notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "context": {
+      "type": "object",
+      "required": ["scheme", "params"],
+      "properties": {
+        "scheme": { "type": "string" },
+        "params": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "observation_map": {
+      "type": "object",
+      "required": ["pi_id", "pi_version", "pi_spec_hash"],
+      "properties": {
+        "pi_id": { "type": "string" },
+        "pi_version": { "type": "string" },
+        "pi_spec_hash": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "obs_space": {
+      "type": "object",
+      "required": ["type", "modulus"],
+      "properties": {
+        "type": { "type": "string", "enum": ["Z_mod_m", "R^d"] },
+        "modulus": { "type": "integer", "minimum": 1 },
+        "d": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": true
+    },
+    "sampling": {
+      "type": "object",
+      "required": ["N", "B"],
+      "properties": {
+        "N": { "type": "integer", "minimum": 0 },
+        "B": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "metrics": {
+      "type": "object",
+      "required": ["rank", "subspace", "branching"],
+      "properties": {
+        "rank": {
+          "type": "object",
+          "required": ["entropy", "entropy_norm", "bins", "entropy_axis", "entropy_norm_axis"],
+          "properties": {
+            "entropy": { "type": "number" },
+            "entropy_norm": { "type": "number" },
+            "bins": { "type": "integer", "minimum": 1 },
+            "entropy_axis": {
+              "type": "object",
+              "required": ["u_r", "u_z"],
+              "properties": {
+                "u_r": { "type": "number" },
+                "u_z": { "type": "number" }
+              },
+              "additionalProperties": false
+            },
+            "entropy_norm_axis": {
+              "type": "object",
+              "required": ["u_r", "u_z"],
+              "properties": {
+                "u_r": { "type": "number" },
+                "u_z": { "type": "number" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": true
+        },
+        "subspace": {
+          "type": "object",
+          "required": ["occupancy_ratio", "nonempty_bins", "total_bins", "bins", "row_occupancy_mean", "row_occupancy_std"],
+          "properties": {
+            "occupancy_ratio": { "type": "number" },
+            "nonempty_bins": { "type": "integer", "minimum": 0 },
+            "total_bins": { "type": "integer", "minimum": 0 },
+            "bins": { "type": "integer", "minimum": 1 },
+            "row_occupancy_mean": { "type": "number" },
+            "row_occupancy_std": { "type": "number" }
+          },
+          "additionalProperties": true
+        },
+        "branching": {
+          "type": "object",
+          "required": ["mean_distinct_per_row", "normalized", "rows", "std_distinct_per_row", "median_distinct_per_row"],
+          "properties": {
+            "mean_distinct_per_row": { "type": "number" },
+            "normalized": { "type": "number" },
+            "rows": { "type": "integer", "minimum": 0 },
+            "std_distinct_per_row": { "type": "number" },
+            "median_distinct_per_row": { "type": "number" }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "bootstrap": {
+      "type": "object",
+      "required": ["samples", "seed", "metrics_mean", "metrics_ci95"],
+      "properties": {
+        "samples": { "type": "integer", "minimum": 0 },
+        "seed": { "type": "integer" },
+        "metrics_mean": { "type": "object" },
+        "metrics_ci95": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "baseline": {
+      "anyOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["distance", "distance_ci95", "thresholds", "classification"],
+          "properties": {
+            "distance": { "type": "number" },
+            "distance_ci95": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": { "type": "number" }
+            },
+            "thresholds": {
+              "type": "object",
+              "required": ["green", "yellow", "red"],
+              "properties": {
+                "green": { "type": "number" },
+                "yellow": { "type": "number" },
+                "red": { "type": "number" }
+              },
+              "additionalProperties": true
+            },
+            "classification": {
+              "type": "string",
+              "enum": ["Within Baseline Envelope", "Deviating", "Strong Deviation"]
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    }
+  },
+  "additionalProperties": true
+}

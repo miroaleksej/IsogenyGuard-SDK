@@ -1,0 +1,15 @@
+{
+  "betti_0": 1,
+  "betti_1": 25,
+  "betti_2": 21,
+  "diagram_dim_0": 200,
+  "diagram_dim_1": 57,
+  "diagram_dim_2": 53,
+  "topological_entropy": 3.110664972164157,
+  "topological_entropy_norm": 0.9145793739979842,
+  "entropy_bins": 30,
+  "entropy_nonzero_bins": 30,
+  "is_secure": false,
+  "points": 200,
+  "dimension": 4
+}

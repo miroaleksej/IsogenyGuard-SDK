@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isogenyguard"
+version = "0.2.0"
+description = "Topological auditing prototype for ECDSA signature data"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Miro Aleksej" }]
+dependencies = [
+  "numpy>=1.22",
+  "scipy>=1.9",
+  "ripser>=0.6.8",
+  "ecdsa>=0.18.0",
+  "jsonschema>=4.19"
+]
+
+[project.optional-dependencies]
+plots = ["matplotlib>=3.7"]
+
+[project.scripts]
+isogenyguard = "isogenyguard.cli:main"
+
+[tool.setuptools]
+packages = ["isogenyguard", "isogenyguard.schemas"]
+
+[tool.setuptools.package-data]
+isogenyguard = ["schemas/*.json"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-q"
+testpaths = ["tests"]

@@ -1,0 +1,166 @@
+{
+  "ond_art_version": "0.1",
+  "notes": [
+    "Diagnostic only; no security claim."
+  ],
+  "context": {
+    "scheme": "ECDSA-secp256k1",
+    "params": {
+      "hash": "sha256"
+    }
+  },
+  "observation_map": {
+    "pi_id": "uruz-map",
+    "pi_version": "1.0",
+    "pi_spec_hash": "TBD"
+  },
+  "obs_space": {
+    "type": "Z_mod_m",
+    "modulus": 115792089237316195423570985008687907852837564279074904382605163141518161494337
+  },
+  "sampling": {
+    "N": 80,
+    "B": 30
+  },
+  "metrics": {
+    "rank": {
+      "entropy": 3.3406117041960703,
+      "entropy_norm": 0.9513537139759102,
+      "bins": 40,
+      "entropy_axis": {
+        "u_r": 3.3538442473961347,
+        "u_z": 3.3273791609960064
+      },
+      "entropy_norm_axis": {
+        "u_r": 0.951078094251635,
+        "u_z": 0.9516293337001853
+      }
+    },
+    "subspace": {
+      "occupancy_ratio": 0.049375,
+      "nonempty_bins": 79,
+      "total_bins": 1600,
+      "bins": 40,
+      "row_occupancy_mean": 0.049375,
+      "row_occupancy_std": 0.04011214747430011
+    },
+    "branching": {
+      "mean_distinct_per_row": 1.0,
+      "normalized": 8.636168555094445e-78,
+      "rows": 80,
+      "std_distinct_per_row": 0.0,
+      "median_distinct_per_row": 1.0
+    }
+  },
+  "bootstrap": {
+    "samples": 30,
+    "seed": 7,
+    "metrics_mean": {
+      "branching.mean_distinct_per_row": 1.0,
+      "branching.median_distinct_per_row": 1.0,
+      "branching.normalized": 8.636168555094445e-78,
+      "branching.rows": 50.96666666666667,
+      "branching.std_distinct_per_row": 0.0,
+      "rank.bins": 40.0,
+      "rank.entropy": 3.120196206944177,
+      "rank.entropy_axis.u_r": 3.1400648557119575,
+      "rank.entropy_axis.u_z": 3.100327558176396,
+      "rank.entropy_norm": 0.9368815495696793,
+      "rank.entropy_norm_axis.u_r": 0.9380264177575756,
+      "rank.entropy_norm_axis.u_z": 0.9357366813817831,
+      "subspace.bins": 40.0,
+      "subspace.nonempty_bins": 50.6,
+      "subspace.occupancy_ratio": 0.03162500000000001,
+      "subspace.row_occupancy_mean": 0.03162500000000001,
+      "subspace.row_occupancy_std": 0.030626193029958334,
+      "subspace.total_bins": 1600.0
+    },
+    "metrics_ci95": {
+      "branching.mean_distinct_per_row": [
+        1.0,
+        1.0
+      ],
+      "branching.median_distinct_per_row": [
+        1.0,
+        1.0
+      ],
+      "branching.normalized": [
+        8.636168555094445e-78,
+        8.636168555094445e-78
+      ],
+      "branching.rows": [
+        46.0,
+        56.0
+      ],
+      "branching.std_distinct_per_row": [
+        0.0,
+        0.0
+      ],
+      "rank.bins": [
+        40.0,
+        40.0
+      ],
+      "rank.entropy": [
+        3.015941404015179,
+        3.2122236805208253
+      ],
+      "rank.entropy_axis.u_r": [
+        3.019751793815545,
+        3.227478237585272
+      ],
+      "rank.entropy_axis.u_z": [
+        2.974611973133022,
+        3.2582871754216707
+      ],
+      "rank.entropy_norm": [
+        0.9181956094864551,
+        0.9487171520964355
+      ],
+      "rank.entropy_norm_axis.u_r": [
+        0.9210916975603309,
+        0.9502830570962221
+      ],
+      "rank.entropy_norm_axis.u_z": [
+        0.9074672933261602,
+        0.9597042299674459
+      ],
+      "subspace.bins": [
+        40.0,
+        40.0
+      ],
+      "subspace.nonempty_bins": [
+        46.0,
+        56.0
+      ],
+      "subspace.occupancy_ratio": [
+        0.02875,
+        0.035
+      ],
+      "subspace.row_occupancy_mean": [
+        0.028749999999999998,
+        0.034999999999999996
+      ],
+      "subspace.row_occupancy_std": [
+        0.027268599231054853,
+        0.03547964546815351
+      ],
+      "subspace.total_bins": [
+        1600.0,
+        1600.0
+      ]
+    }
+  },
+  "baseline": {
+    "distance": 41.90916013220575,
+    "distance_ci95": [
+      0.5825551795381189,
+      8.687182284213545
+    ],
+    "thresholds": {
+      "green": 9.088266131782625,
+      "yellow": 9.6489979517134,
+      "red": 9.702911800346863
+    },
+    "classification": "Strong Deviation"
+  }
+}
